@@ -41,7 +41,7 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    private ResponseEntity<User> getById(@PathVariable Long userId) {
+    private ResponseEntity<User> getById(@PathVariable Integer userId) {
         User user = userRepository.findById(userId).orElse(null);
         return new ResponseEntity<>(user, user.equals(null) ? HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
@@ -108,7 +108,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{userId}")
-    private ResponseEntity<Boolean> remove(@PathVariable Long userId) {
+    private ResponseEntity<Boolean> remove(@PathVariable Integer userId) {
         try {
             User user = userRepository.findById(userId).orElse(null);
             assert user != null;

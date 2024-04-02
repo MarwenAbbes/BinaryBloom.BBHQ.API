@@ -8,19 +8,19 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-@Table(name = "stores")
-public class Store {
+public class OrderItem {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(unique = true)
-    private String name;
+    @ManyToOne
+    @JoinColumn()
+    private Product product;
+    private Integer quantity;
+    private double price;
 
-    private String address;
-    private String status = "A";
-
+    private String status;
 }

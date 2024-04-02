@@ -1,14 +1,8 @@
 package com.binarybloom.userms;
 
-import com.binarybloom.userms.entities.Gender;
-import com.binarybloom.userms.entities.Role;
-import com.binarybloom.userms.entities.Store;
-import com.binarybloom.userms.entities.User;
+import com.binarybloom.userms.entities.*;
 import com.binarybloom.userms.eums.DataStatus;
-import com.binarybloom.userms.repositories.GenderRepository;
-import com.binarybloom.userms.repositories.RoleRepository;
-import com.binarybloom.userms.repositories.StoreRepository;
-import com.binarybloom.userms.repositories.UserRepository;
+import com.binarybloom.userms.repositories.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -46,15 +40,28 @@ public class UserMsApplication {
 //    }
 
     @Bean
-    public CommandLineRunner commandLineRunner(UserRepository userRepository, StoreRepository storeRepository, RoleRepository roleRepository, GenderRepository genderRepository) {
+    public CommandLineRunner commandLineRunner(UserRepository userRepository, StoreRepository storeRepository, RoleRepository roleRepository, GenderRepository genderRepository, CompanyInfoRepository companyInfoRepository) {
         return args -> {
+
+            CompanyInfo _companyInfo = CompanyInfo.builder()
+                    .id(1)
+                    .name("")
+                    .email("")
+                    .faxNumber("")
+                    .principalAddress("")
+                    .secondaryAddress("")
+                    .taxIdentificationNumber("")
+                    .principalPhoneNumber("")
+                    .build();
+            companyInfoRepository.save(_companyInfo);
+
             Gender genderM = Gender.builder()
-                    .id(1L)
+                    .id(1)
                     .name("Male").build();
             genderRepository.save(genderM);
 
             Gender genderF = Gender.builder()
-                    .id(2L)
+                    .id(2)
                     .name("Female").build();
             genderRepository.save(genderF);
 
@@ -65,7 +72,7 @@ public class UserMsApplication {
             roleRepository.save(role);
 
             Store store = Store.builder()
-                    .Name("Store Name")
+                    .name("Store Name")
                     .address("Store Address")
                     .status(DataStatus.A.toString())
                     .build();

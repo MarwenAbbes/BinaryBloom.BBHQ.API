@@ -10,12 +10,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-public class Gender {
-    @Id
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class Category {
+@Id
+@GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
     private String name;
+    private String description;
+    private String code;
+    private String status;
+
+
 }

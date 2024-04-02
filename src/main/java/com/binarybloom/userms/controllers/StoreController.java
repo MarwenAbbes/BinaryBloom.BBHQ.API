@@ -1,5 +1,6 @@
 package com.binarybloom.userms.controllers;
 
+import com.binarybloom.userms.DTO.StoreDTO;
 import com.binarybloom.userms.entities.Store;
 import com.binarybloom.userms.eums.DataStatus;
 import com.binarybloom.userms.repositories.StoreRepository;
@@ -29,9 +30,9 @@ public class StoreController {
     }
 
     @PostMapping
-    private ResponseEntity<Boolean> insert(@RequestBody Store store) {
+    private ResponseEntity<Boolean> insert(@RequestBody Store _store) {
         try {
-            storeRepository.save(store);
+            storeRepository.save(_store);
             return new ResponseEntity<>(Boolean.TRUE, HttpStatus.CREATED);
         } catch (Exception e) {
             logger.error(e.getMessage());
@@ -40,7 +41,7 @@ public class StoreController {
     }
 
     @DeleteMapping("/{storeId}")
-    private ResponseEntity<Boolean> remove(@PathVariable Long storeId) {
+    private ResponseEntity<Boolean> remove(@PathVariable Integer storeId) {
         try {
             Store store = storeRepository.findById(storeId).orElse(null);
             assert store != null;
@@ -54,9 +55,10 @@ public class StoreController {
     }
 
     @PutMapping
-    private ResponseEntity<Boolean> update(@RequestBody Store store) {
+    private ResponseEntity<Boolean> update(@RequestBody Store _store) {
         try {
-            storeRepository.save(store);
+            logger.info(_store.getStatus());
+            storeRepository.save(_store);
             return new ResponseEntity<>(Boolean.TRUE, HttpStatus.CREATED);
         } catch (Exception e) {
             logger.error(e.getMessage());

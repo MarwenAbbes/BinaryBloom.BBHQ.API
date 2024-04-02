@@ -15,7 +15,7 @@ public class TokenHistory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String token;
     private boolean active;
 

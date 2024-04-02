@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class UserDTO {
-    private Long id;
+    private Integer id;
     private String username;
     private String password;
     private String name;
@@ -20,8 +20,8 @@ public class UserDTO {
     private boolean enabled;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private Long store_id;
-    private Long role_id;
-    private Long gender_id;
+    private Integer store_id;
+    private Integer role_id;
+    private Integer gender_id;
 
 }

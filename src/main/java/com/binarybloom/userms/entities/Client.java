@@ -5,35 +5,33 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-@Table(name = "users")
-public class User {
+public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(unique = true)
-    private String username;
-    private String password;
     private String name;
     private String surname;
-
-    private LocalDate birthDay;
     private String email;
     private String phoneNumber;
     private String cin;
+    private String taxRegistrationNumber;
+
     private String address;
-    private boolean enabled;
+    private String city;
+    private String state;
+    private String postalCode;
+    private String alternativePhoneNumber;
+    private String faxNumber;
+    private String companyName;
+    private String status;
     @Column(
             name = "created_at",
             updatable = false,
@@ -47,17 +45,5 @@ public class User {
     )
     private LocalDateTime updatedAt;
 
-    @ManyToOne
-    @JoinColumn()
-    private Store store;
-
-    @ManyToOne
-    @JoinColumn()
-    private Role role;
-    private String status;
-
-    @ManyToOne
-    @JoinColumn()
-    private Gender gender;
 
 }

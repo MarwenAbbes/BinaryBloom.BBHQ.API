@@ -53,7 +53,7 @@ public class RoleController {
     }
 
     @DeleteMapping("/{roleId}")
-    private ResponseEntity<Boolean> remove(@PathVariable Long roleId) {
+    private ResponseEntity<Boolean> remove(@PathVariable Integer roleId) {
         try {
             Role role = roleRepository.findById(roleId).orElse(null);
             assert role != null;
